@@ -130,7 +130,7 @@ namespace :perf do
       raise "Add stackprof to your gemfile to continue `gem 'stackprof', group: :development`"
     end
     TEST_COUNT = (ENV["TEST_COUNT"] ||= "100").to_i
-    file = "tmp/#{Time.now.iso8601}-stackprof-cpu-myapp.dump"
+    file = "tmp/#{Time.now.strftime('%Y_%m_%dT%H-%M-%S-%L')}-stackprof-cpu-myapp.dump"
     StackProf.run(mode: :cpu, out: file) do
       Rake::Task["perf:test"].invoke
     end
@@ -170,7 +170,7 @@ namespace :perf do
       unless ENV["SKIP_FILE_WRITE"]
         ruby = `ruby -v`.chomp
         FileUtils.mkdir_p("tmp")
-        file = File.open("tmp/#{Time.now.iso8601}-#{ruby}-memory-#{TEST_COUNT}-times.txt", 'w')
+        file = File.open("tmp/#{Time.now.strftime('%Y_%m_%dT%H-%M-%S-%L')}-#{ruby}-memory-#{TEST_COUNT}-times.txt", 'w')
         file.sync = true
       end
 
@@ -252,7 +252,7 @@ namespace :perf do
   task :heap => [:setup] do
     require 'objspace'
 
-    file_name = "tmp/#{Time.now.iso8601}-heap.dump"
+    file_name = "tmp/#{Time.now.strftime('%Y_%m_%dT%H-%M-%S-%L')}-heap.dump"
     FileUtils.mkdir_p("tmp")
     ObjectSpace.trace_object_allocations_start
     puts "Running #{ TEST_COUNT } times"

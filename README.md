@@ -278,7 +278,7 @@ If you're still struggling with runtime memory you can generate a heap dump that
 ```
 $ bundle exec derailed exec perf:heap
 Booting: production
-Heap file generated: "tmp/2015-10-01T12:31:03-05:00-heap.dump"
+Heap file generated: "tmp/2015_10_01T12-31-03-453-heap.dump"
 
 Analyzing Heap
 ==============
@@ -288,7 +288,7 @@ Generation: 36 object count: 36705
 Generation: 37 object count: 1301
 Generation: 38 object count: 8
 
-Try uploading "tmp/2015-10-01T12:31:03-05:00-heap.dump" to http://tenderlove.github.io/heap-analyzer/
+Try uploading "tmp/2015_10_01T12-31-03-453-heap.dump" to http://tenderlove.github.io/heap-analyzer/
 ```
 
 For more help on getting data from a heap dump see
